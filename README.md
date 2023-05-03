@@ -1,4 +1,6 @@
 # Ecommerce-Django
+Youtube Setup Tutorial - https://youtu.be/RM3zwecwD-s
+
 Welcome to our full-stack Django e-commerce project! Our platform is a fully functional e-commerce website that allows users to browse products, add them to their cart, and complete the checkout process.
 Our project uses Django, a high-level Python web framework, for the backend and HTML, CSS, and JavaScript for the frontend. We also use PostgreSQL for the database to ensure data is stored securely.
 
@@ -30,6 +32,7 @@ Steps to Add Project to Your Local Pc ;-)
 15. To Add New Catagory You Need To Update File in "Template/HTML/Products".
 16. Now u Are Ready to Go Run Project Using "python manage.py runserver".
 17. For Payment Make Sure to Change  Paypal Developer API.
+18. If Error Check Out Youtube Video For Setup Tutorial.
 
 Thank you for checking out our full-stack Django e-commerce project!
 -copyright Mohit Prajapat 2023
