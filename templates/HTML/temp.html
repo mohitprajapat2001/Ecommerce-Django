@@ -1,0 +1,12 @@
+{% extend 'base.html' %}
+{% block script %}
+<script>
+  alert('hi')
+  $(document).ready(function () {
+    $("button").click(function (){
+      var imageSrc = $(this).attr("src");
+      console.log("imageSrc")
+    })
+  });
+</script>
+{% endblock %}

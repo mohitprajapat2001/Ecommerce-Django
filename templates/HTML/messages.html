@@ -1,0 +1,11 @@
+{% block message %}
+{% if messages %}
+{% for msg in messages %}
+<div id="alertmsg">
+    <div class="alert alert-success m-3 mx-5" id="msg" role="alert">
+        <span class="bi bi-exclamation-triangle-fill"></span> {{msg}}
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

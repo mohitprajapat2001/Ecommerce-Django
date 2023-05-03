@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid p-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="profile-card">
+
+                    <div class="profile-header">
+
+                        <div class="cover-img">
+                            <img src="https://cdn.pixabay.com/photo/2019/10/19/14/16/away-4561518_960_720.jpg"
+                                class="img-fluid p-0 m-0 ">
+                        </div>
+                        <div class="user-img bg-light border border-primary rounded-circle" style="position:absolute;left:50%;
+                            transform: translate(-50%, -50%);
+                            z-index: 5;">
+                            {% if myuser.gender == "F" %}
+                            <img src="https://img.icons8.com/office/48/null/person-female-skin-type-1-2.png">
+                            {% else %}
+                            <img src="https://img.icons8.com/office/48/null/user.png" class="img-fluid p-2 m-0 ">
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="profile-content m-4 p-1 text-capitalize">
+                        <div class="profile-name">{{myuser.name}}</div>
+                        <p class="profile-description">{{myuser.email}}</p>
+                        <div class="profile-info">
+                            <a href="" type="button" class="btn btn-success btn-rounded bi-heart text-white"></a>
+                            <a href="" type="button" class="btn btn-info btn-rounded bi-cart"></a>
+                            <a href="" type="button" class="btn btn-danger btn-rounded bi-box-arrow-left"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card text-capitalize">
+                <div class="card-body">
+                    <span class="card-about-title font-weight-bold">About</span>
+                    <a class="card-edit-title font-weight-bold float-right" data-toggle="modal"
+                        data-target=".bd-usereidt-modal-lg">Edit</a>
+                    <hr>
+                    <p class="bi-person-check"> User Information</p>
+                    <ul>
+                        <li>
+                            <span> Name:</span>
+                            <span>{{myuser.name}}</span>
+                        </li>
+                        <li>
+                            <span> Username:</span>
+                            <span class="text-lowercase">{{myuser.username}}</span>
+                        </li>
+                        <!-- <li>
+                            <span> Bio:</span>
+                            <span>{{myuser.bio}}</span>
+                        </li> -->
+                    </ul>
+                    <p> Contact Information</p>
+                    <ul>
+                        <li>Phone:
+                            <span>{{myuser.phone}}</span>
+                            <span>{{myuser.bio}}</span>
+                        </li>
+                        <li>Email:
+                            <span>{{myuser.email}}</span>
+                            <span>{{myuser.bio}}</span>
+                        </li>
+
+                        <li>Address:
+                            <span>{{myuser.address}}</span>
+                            <span>{{myuser.bio}}</span>
+                        </li>
+                    </ul>
+                    <p class="bi-info-circle"> Basic Information</p>
+                    <ul>
+                        <li>
+                            <span>Birthday:</span>
+                            <span>{{myuser.dob}}</span>
+                        </li>
+                        <li>
+                            <span>Gender:</span>
+                            {% if myuser.gender == "M" %}
+                            <span>Male</span>
+                            {% else %}
+                            <span>Male</span>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <span>Profession:</span>
+                            <span>{{myuser.profession}}</span>
+                        </li>
+                        <li>
+                            <span>Relationship Status:</span>
+                            <span>{{myuser.status}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- UserDetailsEdit Modal -->
+{% include 'HTML/UserDetailsEdit.html' %}
+{% block useredit-block %}{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% block nav-content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">
+    <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png"
+      height="30" class="d-inline-block" alt="Flipkart">
+  </a>
+  <form class="form-inline my-lg-0" method="POST" action="">
+    {% csrf_token %}
+    <div class="input-group">
+      <input class="form-control border-light rounded-0" type="search" name="searchbar" id="searchbar"
+        placeholder="Search For Products" aria-label="Search">
+      <div class="input-group-append">
+        <span class="input-group-text bg-light border-light rounded-0 bi-search text-primary font-weight-bold"></span>
+      </div>
+    </div>
+  </form>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+      <li class="nav-item active">
+        <a type="button" class="nav-link btn-light text-primary text-center text-capitalize"
+          href="/accounts/User/{{user}}">{{user}}<span class="sr-only">(current)</span></a>
+      </li>
+      {% else %}
+      <li class="nav-item active">
+        <button type="button" class="nav-link btn-light text-primary text-center" style="width: 150px;"
+          data-toggle="modal" data-target="#modallogin">Login<span class="sr-only">(current)</span></button>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/mohitprajapat2001">Github</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" title="More">
+          More
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://instagram.com/rowdy_mohit__">Instagram</a>
+          <a class="dropdown-item" href="https://youtube.com/@itsmohitprajapat">Youtube</a>
+          <a class="dropdown-item" href="https://linkdein.com">Linkdein</a>
+          {% if user.is_authenticated %}
+          <a class="dropdown-item" href="/myorders">Orders</a>
+          <a class="dropdown-item" href="/accounts/logout">Logout</a>
+          {% endif %}
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bi-heart" href="/wishlistView "> Wishlist</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bi-cart" href="/Cart"> Cart</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+{% endblock %}

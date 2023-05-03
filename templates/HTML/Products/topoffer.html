@@ -1,0 +1,44 @@
+{% block topoffer-block %}
+<div class="container-xxl pt-3">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card border-0">
+        <img class="card-img-top"
+          src="{% block cardimage %}https://ouch-cdn2.icons8.com/I_9jmdBFc-Muao1bj1RIIQzGdw8r5w9bOHTy0uYF7d4/rs:fit:256:173/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMzUy/LzNjYTdkZDg3LTA1/ZTAtNDRkMy04MTFm/LWUyNGYwYzMxMzJk/NS5zdmc.png{% endblock %}"
+          alt="Card image" height="150">
+        <div class="card-body text-center">
+          <h5 class="card-title text-center">{% block cardtitle %}Top Offer!!!{% endblock %}</h5>
+          <a href="{% block href %}/Products/fashion{% endblock %}" class="btn btn-primary">View All</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div id="{% block target %}topoffer{% endblock %}" class="carousel slide carousel" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            {% for prod in Products %}
+            {% block category-IF-start %}
+            {% if prod.offer %}
+            {% include "HTML/Products/productcarasouel.html" %}
+            {% block productcarasouel %}{% endblock %}
+            {% endif %}
+            {% endblock %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="carousel-control-prev rounded"
+        style="filter: invert(100%);background-color:#000;height:150px;width:50px;transform:translateY(-50%);top:50%"
+        href="#{% block target-prev %}topoffer{% endblock %}" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon"><span class="sr-only">Previous</span></span>
+      </div>
+      <div class="carousel-control-next rounded"
+        style="filter: invert(100%);background-color:#000;height:150px;width:50px;transform:translateY(-50%);top:50%"
+        href="#{% block target-next %}topoffer{% endblock %}" role="button" data-slide="next">
+        <span class="carousel-control-next-icon"><span class="sr-only">Next</span></span>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<!-- Nav Icon on Top  -->
+{% include 'HTML/topnav.html' %}
+{% block topnav %}{% endblock %}
+
+<!-- Carasoul Block -->
+{% include 'HTML/carousel.html' %}
+{% block carousel-block %}{% endblock %}
+
+<!-- Products -->
+{% include 'HTML/Products/topoffer.html' %}
+{% block topoffer-block %}{% endblock %}
+
+<!-- Groseries -->
+{% include 'HTML/Products/groseries.html' %}
+{% block groseries-block %}{% endblock %}
+
+<!-- Phone -->
+{% include 'HTML/Products/phone.html' %}
+{% block phone-block %}{% endblock %}
+
+<!-- Home Decor -->
+{% include 'HTML/Products/homedecor.html' %}
+{% block homedecor-block %}{% endblock %}
+
+<!-- Men Fashion -->
+{% include 'HTML/Products/menfashion.html' %}
+{% block menfashion-block %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,63 @@
+{% block modal_register-block %}
+{% load static %}
+<div class="modal fade" id="modalregister" tabindex="-1" role="dialog" aria-labelledby="modalregister"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-body p-0">
+
+				<div class="container contact">
+					<div class="row" style="height: 500px;">
+						<div class="col-md-4 p-4 pt-5 text-light bg-primary">
+
+							<h5>Looks Like Your New Here !<h5>
+									<p class=" font-weight-light" style="font-size: smaller;">
+										Sign up With your Email to get started
+									</p>
+									<img style="bottom: 0;position:absolute;" class="pb-3"
+										src="{% static 'png/flipkart_loginimg.png' %}" alt="" width="80%" height="40%">
+						</div>
+						<div class="col-md-8 bg-light">
+							<form class="pt-4" method="post" action="accounts/register">
+								{% csrf_token %}
+								<div class="form-floating mb-2 ">
+									<input type="email"
+										class="form-control border-dark border-top-0 border-left-0 border-right-0 rounded-0 "
+										id="email" name="email" placeholder="Enter Your Email" autocomplete=" New Emaik"
+										required>
+								</div>
+								<div class="form-floating mb-2 ">
+									<input type="text"
+										class="form-control border-dark border-top-0 border-left-0 border-right-0 rounded-0 "
+										id="username-register" name="username" placeholder="Enter Your Username"
+										autocomplete="New Username" required>
+								</div>
+								<div class="form-floating mb-2">
+									<input type="password"
+										class="form-control border-top-0 border-left-0 border-right-0 rounded-0 border-dark mb-2"
+										id="Register Password 1" name="password1" placeholder="Choose Password"
+										autocomplete="New Password" required>
+								</div>
+								<div class="form-floating mb-2">
+									<input type="password"
+										class="form-control border-top-0 border-left-0 border-right-0 rounded-0 border-dark mb-4"
+										id="Register Password 2" name="password2" placeholder="Confirm Password"
+										autocomplete="Confirm New Password" required>
+									<span id="emailHelp" class="form-text font-weight-light"
+										style="font-size: smaller;">By continuing, you agree to Flipkart's Terms of Use
+										and Privacy Policy.</span>
+								</div>
+								<button type="submit" class="btn btn-warning btn-block">Login</button>
+							</form>
+							<button class="btn btn-light text-center mt-2 btn-block" data-toggle="modal"
+								data-dismiss="modal" data-target="#modallogin" style="box-shadow:2px 2px 8px;">Existing
+								User?Log In</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

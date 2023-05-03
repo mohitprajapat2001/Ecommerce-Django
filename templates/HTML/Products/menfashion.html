@@ -1,0 +1,22 @@
+{% extends "HTML/Products/topoffer.html" %}
+
+{% block cardimage %}
+https://www.pngkit.com/png/full/769-7692619_fashion-clipart-man-woman-men-and-woman-fashion.png
+{% endblock %}
+
+{% block cardtitle %}Fashion!!{% endblock %}
+
+{% block href %}/Products/fashion{% endblock %}
+
+{% block category-IF-start %}
+{% if prod.category == "fashion" %}
+{% include "HTML/Products/productcarasouel.html" %}
+{% block productcarasouel %}{% endblock %}
+{% endif %}
+{% endblock %}
+
+{% block target %}fashion{% endblock %}
+
+{% block target-prev %}fashion{% endblock %}
+
+{% block target-next %}fashion{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "HTML/Products/topoffer.html" %}
+
+{% block cardimage %}
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2VlrAHKGhcU3wgSolok05r3N3dnsHcCXErQ&usqp=CAU
+{% endblock %}
+
+{% block cardtitle %}Home Decor It!!{% endblock %}
+
+{% block href %}/Products/home{% endblock %}
+
+{% block category-IF-start %}
+{% if prod.category == "home" %}
+{% include "HTML/Products/productcarasouel.html" %}
+{% block productcarasouel %}{% endblock %}
+{% endif %}
+{% endblock %}
+
+{% block target %}home{% endblock %}
+
+{% block target-prev %}home{% endblock %}
+
+{% block target-next %}home{% endblock %}

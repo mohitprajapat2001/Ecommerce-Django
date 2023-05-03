@@ -1,0 +1,22 @@
+{% block block-js %}
+   <script>
+    {% for i in cart_view %}
+    {% if i.cart %}
+    setInterval(function () {
+        var tot = $('.price{{i.id}}').html() * $('.quantity{{i.id}}').val();
+        $('.total{{i.id}}').html(tot);
+          }, 10);
+      {% endif %}
+      {% endfor %}
+          setInterval(function(){
+        var grandTotal = 0;
+        {% for i in cart_view %}
+        {% if i.cart %}
+            var itemTotal = parseFloat($('.total{{ i.id }}').text());
+      grandTotal += itemTotal;
+      {% endif %}
+    {% endfor %}
+    $('#grandtotal').html(grandTotal);
+    },10);
+   </script>
+{% endblock %}

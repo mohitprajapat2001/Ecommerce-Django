@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'style/myorders.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-12">
+            <div class="rounded">
+                <div class="table-responsive table-borderless">
+                    <table class="table">
+                        <thead>
+                            <tr>
+
+                                <th>Order #</th>
+                                <th>Product Name</th>
+                                <th>status</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Created</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-body">
+                            {% for i in cart_views %}
+                            {% if i.paymentstatus %}
+                            <tr>
+                                <td>{{i.paymentid}}</td>
+                                <td>{{i.product_name}}</td>
+                                <td><span class="badge badge-success">{{i.paymentstatus}}</span></td>
+                                <td>{{i.quantity}}</td>
+                                {% for key, value in prices.items %}
+                                {% if key == i.product_id %}
+                                <td>${{value}}</td>
+                                {% endif %}
+                                {% endfor %}
+                                <td>Today</td>
+                                <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

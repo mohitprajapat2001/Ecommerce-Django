@@ -1,0 +1,58 @@
+{% block footer %}
+<footer class="bg-dark text-center text-light">
+    <div class="container-lg p-4">
+
+        <!--Social media -->
+        <section class="mb-4">
+            <a class="btn btn-outline-light btn-floating m-1 bi-house" href="" role="button"></a>
+
+            <!-- <a class="btn btn-outline-light btn-floating m-1 bi-twitter" href="#!" role="button"></a> -->
+
+            <a class="btn btn-outline-light btn-floating m-1 bi-google" href="https://google.com" target="_blank"
+                role="button"></a>
+
+            <a class="btn btn-outline-light btn-floating m-1 bi-instagram" href="https://instagram.com/rowdy_mohit__"
+                role="button"></a>
+
+            <a class="btn btn-outline-light btn-floating m-1 bi-linkedin"
+                href="https://www.linkedin.com/in/mohit-prajapat-246629249/" role="button"></a>
+
+            <a class="btn btn-outline-light btn-floating m-1 bi-github" href="https://github.com/mohitprajapat2001"
+                role="button"></a>
+
+        </section>
+
+        <!-- Subscribe -->
+        <section class="subscribe">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row d-flex justify-content-center text-light text-capitalize">
+                    <div class="col-auto">
+                        <p class="pt-2">
+                            <strong>Sign up for our newsletter</strong>
+                        </p>
+                    </div>
+
+                    <div class="col-md-5 col-12">
+                        <div class="form-outline form-white mb-4">
+                            <input type="email" id="form5Example21" class="form-control" placeholder="Email Address">
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-outline-light mb-4">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.24);">
+            &copy; 2023 Mohit Prajapat:
+            <a class="text-white" href="https://github.com/mohitprajapat2001">Github.com</a>
+        </div>
+
+</footer>
+<!-- Footer -->
+{% endblock %}

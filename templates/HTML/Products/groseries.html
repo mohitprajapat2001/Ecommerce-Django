@@ -1,0 +1,22 @@
+{% extends "HTML/Products/topoffer.html" %}
+
+{% block cardimage %}
+https://moreretail.in/frontend/dist/img/home/food-grocery-img.png
+{% endblock %}
+
+{% block cardtitle %}Blink It!!{% endblock %}
+
+{% block href %}/Products/groseries{% endblock %}
+
+{% block category-IF-start %}
+{% if prod.category == "groseries" %}
+{% include "HTML/Products/productcarasouel.html" %}
+{% block productcarasouel %}{% endblock %}
+{% endif %}
+{% endblock %}
+
+{% block target %}groseries{% endblock %}
+
+{% block target-prev %}groseries{% endblock %}
+
+{% block target-next %}groseries{% endblock %}

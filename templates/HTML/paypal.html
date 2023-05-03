@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center col-md-12 p-5" id="paypal-button-container"></div>
+
+<script
+    src="https://www.paypal.com/sdk/js?client-id=ARyRfJg-En72tLoWBRrLx0nsYWcCoUgh1QEZ_DUL9QYGT2QomE2C12eA3Cz2xLVbw7vi4lMRw1Dt8W0c&currency=USD"></script>
+<script>
+    console.log("{{prod.name}}-{{prod.category}}-{{prod.id}}")
+    paypal.Buttons({
+
+
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: "{{grandtotal}}"
+                    }
+                }]
+            })
+        },
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
+                alert("Done" + details.payer.name.given_name + "!");
+                console.log("Order Id" + details.id)
+                var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                fetch("{% url 'ordercomplete' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken
+                    },
+                    body: JSON.stringify({'transaction_id': details.id})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                }).then(function() {
+                    window.location.href = "{% url 'myorders' %}"})
+                .catch(error => console.error(error));
+            });
+        }
+    }).render("#paypal-button-container");
+
+
+</script>
+{% endblock %}

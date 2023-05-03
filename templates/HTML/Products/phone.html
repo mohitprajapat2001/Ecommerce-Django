@@ -1,0 +1,22 @@
+{% extends "HTML/Products/topoffer.html" %}
+
+{% block cardimage %}
+https://cdn3d.iconscout.com/3d/premium/thumb/online-shopping-offer-4775888-3978668.png
+{% endblock %}
+
+{% block cardtitle %}Mobile Deals!!{% endblock %}
+
+{% block href %}/Products/mobile{% endblock %}
+
+{% block category-IF-start %}
+{% if prod.category == "mobile" %}
+{% include "HTML/Products/productcarasouel.html" %}
+{% block productcarasouel %}{% endblock %}
+{% endif %}
+{% endblock %}
+
+{% block target %}mobile{% endblock %}
+
+{% block target-prev %}mobile{% endblock %}
+
+{% block target-next %}mobile{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% if user.is_authenticated %}
+<div class="container pt-3 pb-3">
+  <div class="row">
+    {% for i in wishlist_view %}
+    {% if i.wishlist %}
+    {% for j in Products %}
+    {% if i.product_id == j.id %}
+    <div class="col-md-3 p-3">
+      <div class="product-grid4">
+        <div class="product-image4">
+          <a href="/Products/{{j.id}}">
+            <img class="pic-1" src="{{j.image1.url}}" height="320px" width="160px">
+            <img class="pic-2" src="{{j.image2.url}}" height="320px" width="160px">
+          </a>
+          <ul class="social">
+
+            <li><a href="/Products/{{j.id}}" data-tip="Quick View"><i class="bi-eye-fill"></i></a></li>
+            <li><a href="/Wishlist/{{j.id}}" data-tip="Add to Wishlist"><i class="bi-suit-heart-fill"></i></a></li>
+          </ul>
+          <span class="product-new-label">New</span>
+          <span class="product-discount-label">-{{i.discount}}%</span>
+        </div>
+        <div class="product-content">
+          <h3 class="title"><a href="/Products/{{j.id}}">{{i.product_name}}</a></h3>
+          <div class="price">
+            ${{i.price}}
+            {% for key, value in zipprice.items %}
+            {% if key == i.id %}
+            <span>${{value}}</span>
+            {% endif %}
+            {% endfor %}
+          </div>
+          <a class="add-to-cart" href="/Payments/{{j.id}}">ADD TO CART</a>
+          <a class="btn btn-danger" href="/wishlistdeleteitem/{{i.id}}"><span class="bi-archive"></span></a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+{% endif %}
+{% endblock %}

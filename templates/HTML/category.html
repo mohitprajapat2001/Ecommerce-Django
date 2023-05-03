@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container pt-3 pb-3">
+  <div class="row">
+    {% for i in myprod %}
+    <div class="col-md-3 p-3">
+      <div class="product-grid4">
+        <div class="product-image4">
+          <a href="/Products/{{i.id}}">
+            <img class="pic-1" src="{{i.image1.url}}" height="320px" width="160px">
+            <img class="pic-2" src="{{i.image2.url}}" height="320px" width="160px">
+          </a>
+          <ul class="social">
+            <li><a href="/Products/{{i.id}}" data-tip="Quick View"><i class="bi-eye-fill"></i></a></li>
+            <li><a href="#" data-tip="Add to Wishlist"><i class="bi-suit-heart-fill"></i></a></li>
+          </ul>
+          <span class="product-new-label">New</span>
+          <span class="product-discount-label">-{{i.discount}}%</span>
+        </div>
+        <div class="product-content">
+          <h3 class="title"><a href="/Products/{{i.id}}">{{i.name}}</a></h3>
+          <div class="price">
+            ${{i.price}}
+            {% for key, value in zipprice.items %}
+            {% if key == i.id %}
+            <span>${{value}}</span>
+            {% endif %}
+            {% endfor %}
+          </div>
+          <a class="add-to-cart" href="/Payments/{{i.id}}">ADD TO CART</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

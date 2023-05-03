@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block script %}
+<script src="{% static 'js/ViewProduct.js' %}"></script>{% endblock %}
+{% block content %}
+<div class="container-xxl p-3 text-capitalize">
+  <div class="row">
+    <div class="col-md-5 item-photo">
+      <div class="imgslider">
+        <div class="imagebox">
+          <img id="imageboxmain" src="{{myprod.image1.url}}" alt="Main Product Image" width="105%">
+        </div>
+        <nav aria-label="Image-Slider" class="pt-3">
+          <ul class="pagination justify-content-center row">
+            <li class="page-item active col-sm-3" aria-current="page">
+              <img src="{{myprod.image1.url}}" alt="image1" width="125%">
+            </li>
+            <li class="page-item col-sm-3"><img src="{{myprod.image2.url}}" alt="image1" width="125%"></li>
+            <li class="page-item col-sm-3"><img src="{{myprod.image3.url}}" alt="image1" width="125%"></li>
+            <li class="page-item col-sm-3"><img src="{{myprod.image4.url}}" alt="image1" width="125%"></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="col-md-7 pl-5" style="border:0px solid gray">
+      <h3>{{myprod.name}}</h3>
+      <h5 class="text-primary">Category: <strong>{{myprod.category}}</strong>
+      </h5>
+
+      <!-- OFFER Price -->
+      {% if myprod.offer %}
+      <h6 class="title-price text-info"><small class="bi bi-piggy-bank-fill"> OFFER Available : -{{myprod.discount}}%
+          Off</small></h6>
+      {% endif %}
+      <h3>${{myprod.price}} <strike class="text-success font-weight-light">${{temp}}</strike></h3>
+
+      <!-- Details -->
+
+      <!-- Size -->
+      {% if myprod.category == "fashion" %}
+      <h6><small>Size :</small>{{myprod.size}}</h6>
+      {% endif %}
+
+      <!-- Quantity -->
+      <h6 class="title-attr"><small>Available: </small>{{myprod.available}}</h6>
+
+      <!-- Buy Now or Add To WIshlist -->
+      <div class="section" style="padding-bottom:20px;">
+        <a href="/Payments/{{myprod.id}}" class="btn btn-primary"><span style="margin-right:20px" class="bi bi-cart"
+            aria-hidden="true"></span>Buy Now</a>
+        <a href="/Wishlist/{{myprod.id}}" class="btn btn-success"><span style="margin-right:20px" class="bi bi-heart"
+            aria-hidden="true"></span>Add To Wishlist</a>
+      </div>
+    </div>
+
+    <div>
+      <div style="width:100%;border-top:1px solid silver">
+        <small>
+          <ul>
+            {% for i in description %}
+            {% if i != "" %}
+            <li>{{i}}</li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

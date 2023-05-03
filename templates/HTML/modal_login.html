@@ -1,0 +1,50 @@
+{% block modal_login-block %}
+{% load static %}
+<div class="modal fade" id="modallogin" tabindex="-1" role="dialog" aria-labelledby="modallogin" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-body p-0">
+
+				<div class="container contact">
+					<div class="row" style="height: 500px;">
+						<div class="col-md-4 p-4 pt-5 text-light bg-primary">
+
+							<h4>Login<h4>
+									<p class=" font-weight-light" style="font-size: smaller;">
+										Get access to your Orders, Wishlist and Recommendations
+									</p>
+									<img style="bottom: 0;position:absolute;" class="pb-3"
+										src="{% static 'png/flipkart_loginimg.png' %}" alt="" width="80%" height="40%">
+						</div>
+						<div class="col-md-8 bg-light">
+							<form class="pt-4" method="POST" action="accounts/userlogin">
+								{% csrf_token %}
+								<div class="form-floating mb-3 ">
+									<input type="text"
+										class="form-control border-dark border-top-0 border-left-0 border-right-0 rounded-0 "
+										id="username-login" name="username" placeholder="Enter Username" autocomplete=" Current Username"
+										required>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="password"
+										class="form-control border-top-0 border-left-0 border-right-0 rounded-0 border-dark mb-4"
+										id="Login Password" name="password" placeholder="Enter your password" 
+										autocomplete=" Current Password" required>
+									<span id="emailHelp" class="form-text font-weight-light"
+										style="font-size: smaller;">By continuing, you agree to Flipkart's Terms of Use
+										and Privacy Policy.</span>
+								</div>
+								<button type="submit" class="btn btn-warning btn-block">Login</button>
+							</form>
+							<a class="btn btn-forget-email text-primary text-center pb-3"
+								style="position:absolute; bottom:0; left:25%; font-size:smaller" data-toggle="modal" data-dismiss="modal" data-target="#modalregister">New Here? Create
+									Your Account</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

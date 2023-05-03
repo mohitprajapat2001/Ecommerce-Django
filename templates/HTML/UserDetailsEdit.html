@@ -1,0 +1,83 @@
+{% block useredit-block %}
+<div class="modal fade bd-usereidt-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" style="width:100%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="user-details-edit">Edit User Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="POST" action="/accounts/edituser">
+        {% csrf_token %}
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="userName">Edit User Name</label>
+            <input type="text" class="form-control" id="editname" aria-describedby="nameHelp" name="name"
+              placeholder="Enter User Name" value="{{myuser.name}}" required>
+          </div>
+          <div class="form-group">
+            <label for="userUsername">Edit User Username</label>
+            <input type="text" class="form-control" id="editusername" aria-describedby="usernameHelp" name="username"
+              placeholder="Enter User Name" value="{{myuser.username}}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="userEmail">Edit User Email address</label>
+            <input type="email" class="form-control" id="editemail" aria-describedby="emailHelp"
+              placeholder="Enter email" name="email" value="{{myuser.email}}" readonly>
+          </div>
+          <div class="form-group">
+            <label for="userPhone">Edit User Phone</label>
+            <input type="tel" class="form-control" id="editphone" aria-describedby="phoneHelp" placeholder="Enter Phone"
+              name="phone" pattern="[9-0]{10}" value="{{myuser.phone}}" required>
+            <small id="phoneHelp" class="form-text text-muted">Format: 1234567890</small>
+          </div>
+          <div class="form-group">
+            <label for="userAddress">Edit User Address</label>
+            <input type="text" class="form-control" id="editaddress" aria-describedby="addressHelp"
+              placeholder="Enter Address" name="address" value="{{myuser.address}}" required>
+          </div>
+          <div class="form-group">
+            <label for="userDOB">Edit User DOB</label>
+            <input type="date" class="form-control" id="editdob" aria-describedby="dobHelp" placeholder="Enter DOB"
+              name="dob" value="{{myuser.dob|date:'Y-m-d'}}" required>
+          </div>
+          <div class="form-group">
+            <label for="userGender">Edit User Gender</label>
+            <select class="custom-select" id="editGender" name="gender" required>
+              <option value="M" selected>Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="userProfession">Edit User Profession</label>
+            <input type="text" class="form-control" id="editprofession" aria-describedby="professionHelp"
+              placeholder="Enter Profession" name="profession" value="{{myuser.profession}}" required>
+          </div>
+          <div class="form-group">
+            <label for="userstatus">Edit User Status</label>
+            <select class="custom-select" id="editstatus" name="status" required>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control" id="studentid" aria-describedby="nameHelp" name="id"
+              placeholder="Student id" value="{{myuser.id}}" hidden>
+          </div>
+          <!-- <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button> -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</a></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

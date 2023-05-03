@@ -1,0 +1,35 @@
+{% block productcarasouel %}
+<div class="col-md-4">
+    <div class="product-grid4">
+        <div class="product-image4">
+            <a href="/Products/{{prod.id}}">
+                <img class="pic-1" src="{{prod.image1.url}}" height="320px" width="160px">
+                <img class="pic-2" src="{{prod.image2.url}}" height="320px" width="160px">
+            </a>
+            <ul class="social">
+                <li><a href="/Products/{{prod.id}}" data-tip="Quick View"><i class="bi-eye-fill"></i></a></li>
+                <li><a href="/Wishlist/{{prod.id}}" data-tip="Add to Wishlist"><i class="bi-suit-heart-fill"></i></a>
+                </li>
+            </ul>
+            <span class="product-new-label">New</span>
+            <span class="product-discount-label">-{{prod.discount}}%</span>
+        </div>
+        <div class="product-content">
+            <h3 class="title"><a href="/Products/{{prod.id}}">{{prod.name}}</a></h3>
+            <div class="price">
+                ${{prod.price}}
+                {% for key, value in zipprice.items %}
+                {% if key == prod.id %}
+                <span>${{value}}</span>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <a class="add-to-cart" href="/Payments/{{prod.id}}">ADD TO CART</a>
+        </div>
+    </div>
+</div>
+{% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+</div>
+<div class="carousel-item">
+    {% endif %}
+    {% endblock %}
