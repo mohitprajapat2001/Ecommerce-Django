@@ -1,7 +1,13 @@
 from django.db import models
 
 # Create your models here.
-class products(models.Model):
+class products(models.Model):    
+    PRODUCT_CATEGORY = (
+        ('groseries', 'Groseries'),
+        ('home', 'Home Decor'),
+        ('mobile', 'Phone'),
+        ('fashion', 'Fashion'),
+        ('O', 'Other'),)
     image1 = models.ImageField(upload_to='productimg')
     image2 = models.ImageField(upload_to='productimg')
     image3 = models.ImageField(upload_to='productimg')
@@ -11,10 +17,12 @@ class products(models.Model):
     tax = models.IntegerField()
     size = models.CharField(max_length=20)
     description = models.TextField()
-    category = models.CharField(max_length=50)
+    category = models.CharField(max_length=25,choices=PRODUCT_CATEGORY)
     available = models.IntegerField()
     offer = models.BooleanField(default=True)
     discount = models.IntegerField()
+    def __str__(self):
+        return self.name  
     
 
 class carasouelimage(models.Model):
