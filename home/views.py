@@ -11,6 +11,19 @@ def home(request):
     params = {'slides':slides, "range":range(slides),"zipprice":zipprice, "Products":Products, "CarasouelImage": CarasouelImage}
     return render(request, "HTML/home.html",params)
 
+def searchproduct(request):
+    if request.method == "POST":
+        search = request.POST['searchbar']
+        namesearch = products.objects.filter(name = search)
+        categorsearch = products.objects.filter(category = search)
+        myprod = list(namesearch) + list(categorsearch)
+        myprod = products.objects.filter(pk__in=[item.pk for item in myprod])
+        print(myprod)
+        for i in myprod:
+            print(i)
+        params = {"myprod":myprod}
+        return render(request, "HTML/category.html", params)
+    
 def prodview(request, prod):
     myprod = products.objects.get(id = prod)
     temp = myprod.price
